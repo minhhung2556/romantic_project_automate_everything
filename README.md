@@ -11,3 +11,12 @@ Everything in bash scripts. And then automatically completely.
 
 ## FAR GOAL
 An AI bot that does anything you'd taught by bash scripts.
+
+## TODO LIST
+[Link](https://docs.google.com/spreadsheets/d/1Z9t5tdQVOHohhLqSypZ0DzL799gQcm9SJsFeGqMzC00/edit?usp=sharing)
+
+## REQUIREMENT FOR A SCRIPT
+* Minimal scope.
+* Define an output result with some input parameters.
+* Help option must be have.
+* Short description is nice to have.
