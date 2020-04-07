@@ -48,6 +48,7 @@ c) COUNTRY_CODE=$OPTARG
     echo "-i = city"
     echo "-s = state or province"
     echo "-c = country code"
+    echo 'sample: sh android_create_keystore.sh -f abc -a xyz -p 123456 -n luong\ do\ minh\ hung -u home -o home -i ho\ chi\ minh -s ho\ chi\ minh -c vn'
     exit 1
 }
 ;;
@@ -74,15 +75,18 @@ echo_params () {
     echo 'CITY='$CITY
     echo 'STATE_PROVINCE='$STATE_PROVINCE
     echo 'COUNTRY_CODE='$COUNTRY_CODE
-    echo 'sample: sh android_create_keystore.sh -f abc -a xyz -p 123456 -n luong\ do\ minh\ hung -u home -o home -i ho\ chi\ minh -s ho\ chi\ minh -c vn'
 }
 
 check_params
 echo_params
 
-rm $FILE_NAME".keystore"
+mkdir -p "build"
 
-keytool -genkey -v -keystore $FILE_NAME".keystore" -alias $ALIAS_NAME -storepass $PASSWORD -keypass $PASSWORD -keyalg RSA -validity $VALIDITY <<!
+FULL_FILE_PATH="build/$FILE_NAME.keystore"
+rm $FULL_FILE_PATH
+
+
+keytool -genkey -v -keystore $FULL_FILE_PATH -alias $ALIAS_NAME -storepass $PASSWORD -keypass $PASSWORD -keyalg RSA -validity $VALIDITY <<!
 $FULL_NAME
 $ORGANIZATIONAL_UNIT
 $ORGANIZATION
@@ -92,7 +96,7 @@ $COUNTRY_CODE
 yes
 !
 
-keytool -importkeystore -srckeystore $FILE_NAME".keystore" -destkeystore $FILE_NAME".keystore" -deststoretype pkcs12 <<!
+keytool -importkeystore -srckeystore $FULL_FILE_PATH -destkeystore $FULL_FILE_PATH -deststoretype pkcs12 <<!
 $PASSWORD
 !
 
