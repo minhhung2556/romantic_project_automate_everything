@@ -1,0 +1,3 @@
+[submodule "flutter_sample_app_with_tests"]
+	path = flutter_sample_app_with_tests
+	url = https://gitlab.com/romantic_project/flutter_sample_app_with_tests.git
